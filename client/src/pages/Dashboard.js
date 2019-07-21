@@ -1,0 +1,184 @@
+import React from "react";
+var Remarkable = require('remarkable');
+
+class Dashboard extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = { value: " " };
+    }
+  
+    handleChange(e) {
+      this.setState({ value: e.target.value });
+    }
+  
+    getRawMarkup() {
+      const md = new Remarkable();
+      return { __html: md.render(this.state.value) };
+    }
+  
+
+ render () {
+  return (
+    <div>
+  {/*row with settings */}
+  <div className="clr-row ">
+    <div className="clr-col-sm-12 clr-col-md-12 clr-col-lg-12">
+
+        {/*This is the navigation bar setup */}
+        {/*navbar color */}
+            <header className="header-4">
+                  <div className="branding">
+                      <a>
+                        {/*logo image/slogan*/}
+                          <img src="image/gt.jpeg" className="nav-link" alt ="Get a life logo"/>
+                          <clr-icon shape="vm-bug"></clr-icon>
+                          <span className="title"></span>
+                      </a>
+                  </div>
+                  {/*Dashboard and Browse links */}
+                  <div class="header-nav">
+                     
+                      
+                      <a href="/home" class="nav-link"><span class="nav-text">Home</span></a>
+                      <a href="/browse" class="nav-link"><span class="nav-text">Browse</span></a>
+                  </div>
+                  {/*nav bar logout */}
+                  <div className="header-actions">
+                      <a href="/welcome" className="nav-link nav-text">
+                          Log Out
+                      </a>
+                  </div>
+            </header>
+    </div>
+  </div>    
+  {/*body of page */}
+  {/*clients information card */}
+  <div className="clr-row ">
+    <div className="clr-col-lg-2 clr-col-md-4">
+        <a href="/andrewyoung" className="card clickable">
+              <div className="card-img">
+                  <img src="image/andrew_young.jpeg" alt="..." />
+              </div>
+                  <div className="card-block">
+                      <p className="card-text">
+                        Name: Andrew Young
+                        <br></br>
+                        Career: Engineer
+                        <br></br>
+                        Age: 34
+                        <br></br>
+                        BucketList:
+                        <br></br>
+                        Run a marathon
+                        <br></br>
+                        Climb Everest
+                        <br></br>
+                        Marry Rhianna
+                      </p>
+                  </div>
+          </a>
+   
+  </div>
+  
+ 
+  {/* second half of page */}
+  {/* colum 1 */}
+  
+    <div className="clr-col-4 clr-col-md-4" >
+        <div className="card">
+            <div className="card-block">
+                <h4 className="card-title">Add Text</h4>
+                <p className="card-text">
+                    
+                        <div className="Dashboard">
+                            <h3>Input</h3>
+                            <label htmlFor="markdown-content">
+
+                            </label>
+                            <textarea
+                            id="markdown-content"
+                            onChange={this.handleChange}
+                            defaultValue={this.state.value}
+                            />
+                             {/* This is where the text output happens*/}
+                            <h3>Output</h3>
+                            <div
+                            className="content"
+                            dangerouslySetInnerHTML={this.getRawMarkup()}
+                            />
+                   
+                    </div>      
+                </p>
+            </div>
+                    <div className="card-footer">
+                        <div className="progress">
+                            <progress value="..." max="100"></progress>
+                        </div>
+                            <a href="..." className="card-link">Add</a>
+                    </div>
+        </div>
+        <div className="card">
+            <div className="card-block">
+                <h4 className="card-title">Upload Photo</h4>
+                <p className="card-text">
+                    <div>
+                        <form className="clr-form clr-form-compact">
+                            <div className="clr-form-control clr-row">
+                                <label for="example" className="clr-control-label clr-col-12 clr-col-md-2">Add Photo Address</label>
+                                <div className="clr-control-container clr-col-12 clr-col-md-10">
+                                    <div className="clr-input-wrapper">
+                                        <input type="text" id="example" placeholder="Example Input" className="clr-input"/>
+                                        <clr-icon className="clr-validate-icon" shape="exclamation-circle"> </clr-icon>
+                                    </div>
+                                    <span className="clr-subtext">Are you ready!</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>      
+                </p>
+            </div>
+                    <div className="card-footer">
+                        <div className="progress">
+                            <progress value="..." max="100"></progress>
+                        </div>
+                            <a href="..." className="card-link">Add</a>
+                    </div>
+        </div>
+    </div> 
+       
+    
+    
+    {/* colum 2 */}
+  
+    <div classNameName="clr-col-lg-6 clr-col-md-4" >
+        <div className="card">
+                <div className="card-block">
+                    <h4 className="card-title">Upload Video</h4>
+                    <p className="card-text">BucketList your way !</p>
+                </div>
+                <div className="card-footer">
+                    <div className="progress">
+                        <progress value="..." max="100"></progress>
+                    </div>
+                    <a href="..." className="card-link">Add</a>
+                </div>
+        </div>
+    </div>
+      
+   
+      
+    
+    
+    
+    </div>
+
+</div>
+
+
+
+  );
+}
+}
+
+export default Dashboard;
