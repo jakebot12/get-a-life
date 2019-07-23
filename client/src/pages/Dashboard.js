@@ -109,42 +109,49 @@ class Dashboard extends React.Component {
                                         name="firstname"
                                         value={this.state.firstname.value}
                                         onChange={this.handleChange}
+                                        className="input-box"
                                 /><br/><br/>
                             <label>Last Name: </label>  
                             <input type="lastname"
                                     name="lastname"
                                     value={this.state.lastname.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
                             <label>Career: </label>  
                             <input type="career"
                                     name="career"
                                     value={this.state.career.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
                             <label> Age: </label>  
                             <input type="age"
                                     name="age"
                                     value={this.state.age.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
                             <label>Bucket List One : </label>  
                             <input type="BucketListOne"
                                     name="BucketListOne"
                                     value={this.state.BucketListOne.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
                              <label>Bucket List Two : </label>  
                             <input type="BucketListTwo"
                                     name="BucketListTwo"
                                     value={this.state.BucketListTwo.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
                              <label>Bucket List Three : </label>  
                             <input type="BucketListThree"
                                     name="BucketListThree"
                                     value={this.state.BucketListThree.value}
                                     onChange={this.handleChange}
+                                    className="input-box"
                             /> <br/><br/>
 
                             </form>
