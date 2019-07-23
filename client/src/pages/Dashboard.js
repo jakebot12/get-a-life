@@ -5,12 +5,32 @@ class Dashboard extends React.Component {
     constructor(props) {
       super(props);
       this.handleChange = this.handleChange.bind(this);
-      this.state = { value: " " };
-    }
-  
+      this.state = { 
+        // formsControls: {
+            firstname: {value: " "},
+            lastname: {value: " "},
+            career: {value: " "},
+            age: {value: " "},
+            BucketListOne: {value: " "},
+            BucketListTwo: {value: " "},
+            BucketListThree: {value: " "}
+        }  
+    // }
+}
     handleChange(e) {
       this.setState({ value: e.target.value });
-    }
+    //   formsControls: {
+    //     ...this.state.formControls,[firstname]: {value: " "},
+    //     lastname: {value: " "},
+    //     career: {value: " "},
+    //     age: {value: " "},
+    //     BucketListOne: {value: " "},
+    //     BucketListTwo: {value: " "},
+    //     BucketListThree: {value: " "}
+    //     }  
+    // });
+      };
+    
   
     getRawMarkup() {
       const md = new Remarkable();
@@ -88,21 +108,67 @@ class Dashboard extends React.Component {
     <div className="clr-col-4 clr-col-md-4" >
         <div className="card">
             <div className="card-block">
-                <h4 className="card-title">Add Text</h4>
+                <h4 className="card-title">Bucket List Information</h4>
                 <p className="card-text">
                     
                         <div className="Dashboard">
-                            <h3>Input</h3>
+                            <form>
+                            <br/>
+                            <label>First Name: </label>   
+                            <input type="firstname"
+                                        name="firstname"
+                                        value={this.state.firstname.value}
+                                        onChange={this.handleChange}
+                                /><br/><br/>
+                            <label>Last Name: </label>  
+                            <input type="lastname"
+                                    name="lastname"
+                                    value={this.state.lastname.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+                            <label>Career: </label>  
+                            <input type="career"
+                                    name="career"
+                                    value={this.state.career.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+                            <label> Age: </label>  
+                            <input type="age"
+                                    name="age"
+                                    value={this.state.age.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+                            <label>Bucket List One : </label>  
+                            <input type="BucketListOne"
+                                    name="BucketListOne"
+                                    value={this.state.BucketListOne.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+                             <label>Bucket List Two : </label>  
+                            <input type="BucketListTwo"
+                                    name="BucketListTwo"
+                                    value={this.state.BucketListTwo.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+                             <label>Bucket List Three : </label>  
+                            <input type="BucketListThree"
+                                    name="BucketListThree"
+                                    value={this.state.BucketListThree.value}
+                                    onChange={this.handleChange}
+                            /> <br/><br/>
+
+                            </form>
+                            {/* <h3>Input</h3>
                             <label htmlFor="markdown-content">
 
-                            </label>
-                            <textarea
+                            </label> */}
+                            {/* <textarea
                             id="markdown-content"
                             onChange={this.handleChange}
                             defaultValue={this.state.value}
-                            />
+                            /> */}
                              {/* This is where the text output happens*/}
-                            <h3>Output</h3>
+                            {/* <h3>Output</h3> */}
                             <div
                             className="content"
                             dangerouslySetInnerHTML={this.getRawMarkup()}
@@ -115,7 +181,7 @@ class Dashboard extends React.Component {
                         <div className="progress">
                             <progress value="..." max="100"></progress>
                         </div>
-                            <a href="..." className="card-link">Add</a>
+                            <a href="..." className="card-link">Update</a>
                     </div>
         </div>
         <div className="card">
@@ -150,21 +216,7 @@ class Dashboard extends React.Component {
     
     
     {/* colum 2 */}
-  
-    <div classNameName="clr-col-lg-6 clr-col-md-4" >
-        <div className="card">
-                <div className="card-block">
-                    <h4 className="card-title">Upload Video</h4>
-                    <p className="card-text">BucketList your way !</p>
-                </div>
-                <div className="card-footer">
-                    <div className="progress">
-                        <progress value="..." max="100"></progress>
-                    </div>
-                    <a href="..." className="card-link">Add</a>
-                </div>
-        </div>
-    </div>
+ 
       
    
       
