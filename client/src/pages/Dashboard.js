@@ -19,17 +19,7 @@ class Dashboard extends React.Component {
 }
     handleChange(e) {
       this.setState({ value: e.target.value });
-    //   formsControls: {
-    //     ...this.state.formControls,[firstname]: {value: " "},
-    //     lastname: {value: " "},
-    //     career: {value: " "},
-    //     age: {value: " "},
-    //     BucketListOne: {value: " "},
-    //     BucketListTwo: {value: " "},
-    //     BucketListThree: {value: " "}
-    //     }  
-    // });
-      };
+    };
     
   
     getRawMarkup() {
