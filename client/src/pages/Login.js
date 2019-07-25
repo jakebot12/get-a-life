@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import "../utils/API";
+import {Redirect} from "react-router-dom";
 
 class Login extends React.Component {
   state = {
@@ -31,13 +32,14 @@ class Login extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-
+{/* <Redirect to="/Dashboard"/> */}
     var user = this.state.users.filter(each => each.user === this.state.uname);
     console.log(user[0].password);
     if (user[0].password === this.state.psw) {
       alert("Hello " + this.state.uname)
       this.setState({ 
-        authenticated: true
+        authenticated: true,
+        redirect: "/Dashboard"
       });
     } else {
       alert("Either user doesn't exist, or password is incorrect.");
@@ -53,6 +55,10 @@ class Login extends React.Component {
 
   render() {
     console.log("render");
+    
+    if (this.state.authenticated) return (<Redirect to={this.state.redirect} />)
+
+
     return (
       <React.Fragment>
         {this.state.authenticated === false && <h1>Please sign in</h1>}

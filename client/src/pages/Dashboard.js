@@ -18,7 +18,8 @@ class Dashboard extends React.Component {
     // }
 }
     handleChange(e) {
-      this.setState({ value: e.target.value });
+     // this.setState({ value: e.target.value });
+      console.log(e.target.value)
     //   formsControls: {
     //     ...this.state.formControls,[firstname]: {value: " "},
     //     lastname: {value: " "},
