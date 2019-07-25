@@ -23,7 +23,7 @@ function Contact(props) {
   
         <div class="card-text">
           <p class="about">
-          Web Developer at Circle the City
+          I am a Junior Web Developer. I have working knowledge of Html, CSS, Bootstrap, Javascript, JQuery, React, and MongoDB.
           </p>
         </div>
       
