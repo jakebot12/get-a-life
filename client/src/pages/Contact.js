@@ -114,7 +114,7 @@ function Contact(props) {
         </div>
       
         <div className="card-footer">
-          <a href="https://www.linkedin.com/in/christine-clark-9b896397/"><img src="/image/iconfinder_linkedin_386655.svg" className="icons" alt="linkedin"/></a>
+          <a href="https://www.linkedin.com/in/christine-clark-9b896397/"><img src="/image/iconfinder_linkedin_386655.svg" className="icons" gitalt="linkedin"/></a>
           <a href="https://github.com/clark1472"><img src="/image/iconfinder_github_253591.svg" className="icons" alt="github"/></a>
           <a href="christenclark1472@gmail.com "><img src="/image/iconfinder_aiga_mail_134146.svg" className="icons" id="mail"alt="e-mail"/></a>
         </div>
