@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
 import Learn from "./Login";
 
 function Contact(props) {
   return (
     <div className="clr-row">
-      <div className="clr-col-12 ">
-        <h1 className="headingC">Contact Page</h1>
+      {/* <div className="clr-col-12 ">
+        <h1 className="headingC">Contact Page</h1> */}
 
   {/* person 1  */}
     <div className="clr-row">
@@ -82,7 +81,7 @@ function Contact(props) {
 
         <div class="card-text">
           <p class="about">
-          Studying to be full stack developer. Bachelors in Industrial Technology with a Graphic Information. Experience in Web Design, Print Design, and I.T. as my current profession.
+          Studying to be full stack developer. Bachelors in Industrial Technology with a Graphic Information. Experience in Web Design, Print Design, and I.T.
           </p>
         </div>
         
@@ -110,7 +109,7 @@ function Contact(props) {
 
         <div class="card-text">
           <p class="about">
-          Worked for engineering firm as a computer technician. Enjoy the artistic component of Front-End Design. I look forward to showing my creative flare in every project.
+          Worked for engineering firm as a computer technician. Enjoy the artistic part of Front-End Design. Look forward to showing my creative flare.
           </p>
         </div>
       
@@ -126,7 +125,7 @@ function Contact(props) {
   {/* person 4  */}
 
       </div>  
-    </div>    
+    // </div>    
     
   );
 }
