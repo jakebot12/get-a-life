@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import "../utils/API";
-import {Redirect} from "react-router-dom";
 
 class Login extends React.Component {
   state = {
@@ -32,14 +31,13 @@ class Login extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-{/* <Redirect to="/Dashboard"/> */}
+
     var user = this.state.users.filter(each => each.user === this.state.uname);
     console.log(user[0].password);
     if (user[0].password === this.state.psw) {
       alert("Hello " + this.state.uname)
-      this.setState({ 
-        authenticated: true,
-        redirect: "/Dashboard"
+      this.setState({
+        authenticated: true
       });
     } else {
       alert("Either user doesn't exist, or password is incorrect.");
@@ -54,11 +52,7 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log("render");
-    
-    if (this.state.authenticated) return (<Redirect to={this.state.redirect} />)
-
-
+    ;
     return (
       <React.Fragment>
         {this.state.authenticated === false && <h1>Please sign in</h1>}
@@ -69,28 +63,7 @@ class Login extends React.Component {
               <div className="clr-col-sm-12 clr-col-md-12 clr-col-lg-12">
                 {/*This is the navigation bar setup */}
                 {/*navbar color */}
-                <header className="header-4">
-                  <div className="branding">
-                    <a>
-                      {/*logo image/slogan*/}
-                      <img
-                        src="image/gt.jpeg"
-                        className="nav-link"
-                        alt="Get a life logo"
-                      />
-                      <clr-icon shape="vm-bug" />
-                      <span className="title">The BucketList App!</span>
-                    </a>
-                  </div>
-                  {/*Dashboard and Browse links */}
-                  <div className="header-nav" />
-                  {/*nav bar logout */}
-                  <div className="header-actions">
-                    <a href="/welcome" className="nav-link nav-text">
-                      Back
-                    </a>
-                  </div>
-                </header>
+
               </div>
             </div>
             {/*END OF NAV */}
@@ -137,10 +110,12 @@ class Login extends React.Component {
                         required
                       />
                     </div>
-                    
+
                     <button type="submit">
+
                       {this.state.authenticated === false}
                       
+
                       <a href="/signup" id="color">
                         Get Signed Up
                       </a>

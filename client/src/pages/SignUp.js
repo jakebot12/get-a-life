@@ -12,6 +12,7 @@ class User extends Component {
     usernameExists: false,
     users: [],
     user: "",
+
     password: "",
     firstname: "",
     lastname: ""
@@ -26,6 +27,7 @@ class User extends Component {
     });
     // request db or someone elses api
   }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -50,13 +52,16 @@ class User extends Component {
     //   });
     // } else {
       API.saveUser({
+
         user: this.state.uname,
         password: this.state.password,
         firstname: this.state.firstname,
         lastname: this.state.lastname
+
       })
         .then(res => this.getUser)
         .catch(err => console.log(err));
+
     // }
   };
 
@@ -93,6 +98,7 @@ class User extends Component {
               </div>
             </header>
           </div>
+
         </div>
         {/*signup page */}
         <div className="clr-row">
@@ -124,8 +130,10 @@ class User extends Component {
                   value={this.state.firstname}
                   onChange={this.handleInputChange}
                   placeholder="Enter First Name"
+
                   name="firstname"
                   //required
+
                 />
               </div>
               {/*lastname */}
@@ -137,8 +145,10 @@ class User extends Component {
                   value={this.state.lastname}
                   onChange={this.handleInputChange}
                   placeholder="Enter Last Name"
+
                   name="lastname"
                   //required
+
                 />
               </div>
 
@@ -148,11 +158,13 @@ class User extends Component {
                   <b>user name</b>
                 </label>
                 <Input
+
                   value={this.state.uname}
                   onChange={this.handleInputChange}
                   name="uname"
                   placeholder="username"
                 />
+
               </div>
               {/*password */}
 
@@ -165,22 +177,26 @@ class User extends Component {
                   onChange={this.handleInputChange}
                   name="password"
                   placeholder="password"
+
                 />
               </div>
               <FormBtn
                 // disabled={!(this.state.user && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
+
                 Get Started
               </FormBtn>
               <label>
                 <input type="checkbox" checked="checked" name="remember" />{" "}
                 Remember me
                 <span className="psw">
+
                   Forgot <a href="#">password?</a>
                 </span>
               </label>
             </div>
+
 
             <span />
 
@@ -190,6 +206,7 @@ class User extends Component {
           </form>
         </div>
       </div>
+
     );
   }
 }
