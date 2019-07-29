@@ -8,25 +8,7 @@ function Welcome() {
             <div className="clr-row">
             {/*head */}
             <div class="clr-col-sm-12 clr-col-md-12  clr-col-lg-12">
-            <header className="header-4">
-                  <div className="branding">
-                      <a>
-                      
-                        {/*logo image/slogan*/}
-                          <img src="image/gt.jpeg" className="nav-link" alt="GAL logo"/>
-                          <clr-icon shape="vm-bug"></clr-icon>
-                          <span className="title">A Life of Adventure Awaits !</span>
-                      </a>
-                  </div>
-                  {/*Dashboard and Browse links */}
-                 
-                  {/*nav bar logout */}
-                  <div className="header-actions">
-                      <a href="/login" className="nav-link nav-text">
-                         
-                      </a>
-                  </div>
-            </header>
+            
             </div>
 
             {/*body */}
