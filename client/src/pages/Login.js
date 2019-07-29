@@ -112,7 +112,9 @@ class Login extends React.Component {
                     </div>
 
                     <button type="submit">
-                      {this.state.authenticated === true}
+
+                      {this.state.authenticated === false}
+                      
 
                       <a href="/signup" id="color">
                         Get Signed Up
