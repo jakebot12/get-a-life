@@ -12,7 +12,7 @@ class User extends Component {
     users: [],
     user: "",
     password: ""
-    
+
   };
 
 
@@ -21,7 +21,7 @@ class User extends Component {
   // }
 
 
-  
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -36,55 +36,30 @@ class User extends Component {
       API.saveUser({
         user: this.state.user,
         password: this.state.password
-        
+
       })
         .then(res => this.getUser())
         .catch(err => console.log(err));
-        
+
     }
   };
 
 
-render() {
-  return (
+  render() {
+    return (
 
-    //<Container fluid>
-    <div className="mainLogin">
-      {/*row with settings */}
-      <div className="clr-row ">
-        <div className="clr-col-sm-12 clr-col-md-12 clr-col-lg-12">
-          {/*This is the navigation bar setup */}
-          {/*navbar color */}
-          <header className="header-4">
-            <div className="branding">
-              <a>
-                {/*logo image/slogan*/}
-                <img
-                  src="image/gt.jpeg"
-                  className="nav-link"
-                  alt="Get a life logo"
-                />
-                <clr-icon shape="vm-bug" />
-                <span className="title">The BucketList App!</span>
-              </a>
-            </div>
-            {/*Dashboard and Browse links */}
-            <div className="header-nav" />
-            {/*nav bar logout */}
-            <div className="header-actions">
-              <a href="/welcome" className="nav-link nav-text">
-                Back
-              </a>
-            </div>
-          </header>
+      //<Container fluid>
+      <div className="mainLogin">
+        {/*row with settings */}
+        <div className="clr-row ">
+
         </div>
-      </div>
-      {/*signup page */}
-      <div className="clr-row">
-        <div className="clr-col" />
-        <div className="clr-col-6">
-          <h2>Sign Up Today </h2>
-      </div>
+        {/*signup page */}
+        <div className="clr-row">
+          <div className="clr-col" />
+          <div className="clr-col-6">
+            <h2>Sign Up Today </h2>
+          </div>
           <form action="/action_page.php">
             <div className="imgcontainer">
               <img
@@ -107,7 +82,7 @@ render() {
                   type="text"
                   placeholder="Enter First Name"
                   name="uname"
-                  //required
+                //required
                 />
               </div>
               {/*lastname */}
@@ -119,64 +94,64 @@ render() {
                   type="text"
                   placeholder="Enter Last Name"
                   name="uname"
-                  //required
+                //required
                 />
               </div>
-              
+
               {/*username */}
               <div className="clr-col-lg-12">
-              <label>
-                <b>user name</b>
+                <label>
+                  <b>user name</b>
                 </label>
-              <Input
-                value={this.state.user}
-                onChange={this.handleInputChange}
-                name="user"
-                placeholder="username"
-                
-              />
-             
-                </div>
-                {/*password */}
-                
-                <div className="clr-col-lg-12">
-              <label>
-                <b>password</b>
+                <Input
+                  value={this.state.user}
+                  onChange={this.handleInputChange}
+                  name="user"
+                  placeholder="username"
+
+                />
+
+              </div>
+              {/*password */}
+
+              <div className="clr-col-lg-12">
+                <label>
+                  <b>password</b>
                 </label>
-              <Input
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                name="password"
-                placeholder="password"
-                
-              />
+                <Input
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  placeholder="password"
+
+                />
               </div>
               <FormBtn
                 disabled={!(this.state.user && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                
+
                 Get Started
                 </FormBtn>
-                <label>
-                  <input type="checkbox" checked="checked" name="remember" />{" "}
-                  Remember me
+              <label>
+                <input type="checkbox" checked="checked" name="remember" />{" "}
+                Remember me
                   <span className="psw">
-                    Forgot <a href="#">password?</a>
-                  </span>
-                </label>
-              </div>
-            
-          
-          <span />
-        
-        <div class="clr-col">
-          <span />
+                  Forgot <a href="#">password?</a>
+                </span>
+              </label>
+            </div>
+
+
+            <span />
+
+            <div class="clr-col">
+              <span />
+            </div>
+          </form>
         </div>
-      </form>
       </div>
-    </div>
-    
+
     );
   }
 }

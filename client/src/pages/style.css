@@ -173,3 +173,9 @@ position: right;
   width: 50px;
   padding: 5px;
 }
+.cardInfo{
+  font-family: "Times New Roman", Times, serif;
+}
+.textzone{
+ width: 100%;
+}
