@@ -150,7 +150,9 @@ class Login extends React.Component {
           </div>
         </form>
 
-        {this.state.authenticated === true && <h1>Hello {this.state.email}</h1>}
+        {this.state.authenticated === true && <h1>Hello {this.state.email}
+        
+        </h1>}
       </React.Fragment>
     );
   }

@@ -6,6 +6,7 @@ import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Forms";
 import { storage } from "../firebase";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class User extends Component {
   state = {
@@ -51,17 +52,19 @@ class User extends Component {
     //     redirect: "/Login"
     //   });
     // } else {
+      
       API.saveUser({
 
         user: this.state.uname,
         password: this.state.password,
         firstname: this.state.firstname,
-        lastname: this.state.lastname
-
+        lastname: this.state.lastname,
+        //redirect: "/Login"
       })
         .then(res => this.getUser)
-        .catch(err => console.log(err));
-
+        .catch(err => console.log(err))
+        //redirect: "/Login"
+       // {<Redirect to="/login"/>}
     // }
   };
 
@@ -148,13 +151,17 @@ class User extends Component {
 
                 />
               </div>
-              <FormBtn
+              <FormBtn a href = "./Login"
                 // disabled={!(this.state.user && this.state.password)}
                 onClick={this.handleFormSubmit}
+                
               >
 
                 Get Started
               </FormBtn>
+              <div>
+              <Link to="/Login">Login</Link>
+              </div>
               <label>
                 <input type="checkbox" checked="checked" name="remember" />{" "}
                 Remember me
