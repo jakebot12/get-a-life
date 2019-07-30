@@ -35,9 +35,12 @@ class Login extends React.Component {
     var user = this.state.users.filter(each => each.user === this.state.uname);
     console.log(user[0].password);
     if (user[0].password === this.state.psw) {
+      sessionStorage.id = user[0]._id
       alert("Hello " + this.state.uname)
       this.setState({
         authenticated: true
+        
+        
       });
     } else {
       alert("Either user doesn't exist, or password is incorrect.");

@@ -1,11 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import CardPic from "./CardPic";
 import Form from "./Form"
 import ClientCard from "./ClientCard"
 import ClientCardForm from "./ClientCardForm";
-
-
+import { Input, TextArea, FormBtn } from "../components/Forms";
+import API from "../utils/API";
+//<Link to="/saved">saved</Link>
 //import ImageUploads from "../components/ImageUploads";
 import { storage } from "../firebase";
 
@@ -19,24 +20,94 @@ class Dashboard extends React.Component {
       // formsControls: {
         image: null,
         url: "",
-      firstname: { value: " " },
-      lastname: { value: " " },
-      career: { value: " " },
-      age: { value: " " },
-      BucketListOne: { value: " " },
-      BucketListTwo: { value: " " },
-      BucketListThree: { value: " " }
+      firstname: "",
+      lastname: "",
+      career: "",
+      age: "",
+      BucketListOne: "",
+      BucketListTwo: "",
+      BucketListThree: "",
+      user: "",
+      savedUser: sessionStorage.id
+
+      
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.userB = this.userB.bind(this);
     // }
+  
+
+    
+  
+    
+  
+  
   }
+  
+  componentDidMount() {
+    this.userB(sessionStorage.id);
+  }
+
+  //const savedUser = localStorage.id;
   handleChange = e => {
     if (e.target.files[0]) {
       const image = e.target.files[0];
       this.setState(() => ({ image }));
     }
   };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  
+
+  userB = id =>{
+    API.getUser(id)
+    .then(res => this.setState({ res} ,console.log(res.data) )
+    )
+    
+  };
+
+
+  loadBooks = () => {
+    API.getBooks()
+      .then(res =>
+        this.setState({ books: res.data, title: "", author: "", description: "", published: "", bookId: "", })
+      )
+      .catch(err => console.log(err));
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+  API.saveBucket({
+
+    user: this.state.uname,
+    
+    firstname: this.state.firstname,
+    lastname: this.state.lastname,
+    career: this.state.career,
+    age: this.state.age,
+    userid: this.state.savedUser,
+
+    bucketListOne: this.state.BucketListOne,
+    bucketListTwo: this.state.BucketListTwo,
+    bucketListThree: this.state.BucketListThree
+
+  })
+    .then(res => this.getBuckets)
+    .catch(err => console.log(err));
+
+// }
+};
+
+
+
   handleUpload = () => {
     const { image } = this.state;
     console.log(image);
@@ -101,14 +172,14 @@ class Dashboard extends React.Component {
                 </a>
               </div>
               {/*Dashboard and Browse links */}
-              <div class="header-nav">
+              {/* <div class="header-nav">
                 <a href="/home" class="nav-link">
                   <span class="nav-text">Home</span>
                 </a>
                 <a href="/browse" class="nav-link">
                   <span class="nav-text">Browse</span>
                 </a>
-              </div>
+              </div> */}
               {/*nav bar logout */}
               <div className="header-actions">
                 <a href="/welcome" className="nav-link nav-text">
@@ -124,23 +195,24 @@ class Dashboard extends React.Component {
           <div className="clr-col-lg-2 clr-col-md-4">
             <a href="/andrewyoung" className="card clickable">
               <div className="card-img">
+                
               <img src={this.state.url || "image/andrew_young.jpeg"}  alt="Uploaded Images" height="100" width="200"/>
-              </div>
+              </div >
               <div className="card-block">
                 <p className="card-text">
-                  Name: Andrew Young
+                  Welcome {this.state.user}
                   <br />
-                  Career: Engineer
+                  {this.state.career}
                   <br />
-                  Age: 34
+                  {this.state.age}
                   <br />
                   BucketList:
                   <br />
-                  Run a marathon
+                  {this.state.bucketListOne}
                   <br />
-                  Climb Everest
+                  {this.state.bucketListTwo}
                   <br />
-                  Marry Rhianna
+                  {this.state.bucketListThree}
                 </p>
               </div>
             </a>
@@ -161,8 +233,9 @@ class Dashboard extends React.Component {
                       <input
                         type="firstname"
                         name="firstname"
-                        value={this.state.firstname.value}
-                        onChange={this.handleChange}
+                        value={this.state.firstname}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter First Name"
                       />
                       <br />
                       <br />
@@ -170,8 +243,9 @@ class Dashboard extends React.Component {
                       <input
                         type="lastname"
                         name="lastname"
-                        value={this.state.lastname.value}
-                        onChange={this.handleChange}
+                        value={this.state.lastname}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Last Name"
                       />{" "}
                       <br />
                       <br />
@@ -179,8 +253,9 @@ class Dashboard extends React.Component {
                       <input
                         type="career"
                         name="career"
-                        value={this.state.career.value}
-                        onChange={this.handleChange}
+                        value={this.state.career}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Career"
                       />{" "}
                       <br />
                       <br />
@@ -188,8 +263,9 @@ class Dashboard extends React.Component {
                       <input
                         type="age"
                         name="age"
-                        value={this.state.age.value}
-                        onChange={this.handleChange}
+                        value={this.state.age}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Age"
                       />{" "}
                       <br />
                       <br />
@@ -197,8 +273,9 @@ class Dashboard extends React.Component {
                       <input
                         type="BucketListOne"
                         name="BucketListOne"
-                        value={this.state.BucketListOne.value}
-                        onChange={this.handleChange}
+                        value={this.state.BucketListOne}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Bucket List One"
                       />{" "}
                       <br />
                       <br />
@@ -206,8 +283,9 @@ class Dashboard extends React.Component {
                       <input
                         type="BucketListTwo"
                         name="BucketListTwo"
-                        value={this.state.BucketListTwo.value}
-                        onChange={this.handleChange}
+                        value={this.state.BucketListTwo}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Bucket List Two"
                       />{" "}
                       <br />
                       <br />
@@ -215,8 +293,9 @@ class Dashboard extends React.Component {
                       <input
                         type="BucketListThree"
                         name="BucketListThree"
-                        value={this.state.BucketListThree.value}
-                        onChange={this.handleChange}
+                        value={this.state.BucketListThree}
+                        onChange={this.handleInputChange}
+                        placeholder="Enter Bucket List Three"
                       />{" "}
                       <br />
                       <br />
@@ -243,9 +322,19 @@ class Dashboard extends React.Component {
                 <div className="progress">
                   <progress value="..." max="100" />
                 </div>
-                <a href="..." className="card-link">
+
+                <FormBtn
+                // disabled={!(this.state.user && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+
+               Update
+              </FormBtn>
+
+
+                {/* <a href="..." className="card-link">
                   Update
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="card">
@@ -276,8 +365,8 @@ class Dashboard extends React.Component {
       </div>
     );
   }
-}
 
+}
 
 // class Dashboard extends React.Component  {
 //   constructor(props){

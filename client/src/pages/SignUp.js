@@ -118,39 +118,7 @@ class User extends Component {
               <a href="/dashboard">
                 <h2>Upload image here</h2>
               </a>
-            </div>
-
-            <div className="container">
-              {/*firstname */}
-              <div className="clr-col-lg-6">
-                <label for="firstname">
-                  <b>First Name</b>
-                </label>
-                <input
-                  value={this.state.firstname}
-                  onChange={this.handleInputChange}
-                  placeholder="Enter First Name"
-
-                  name="firstname"
-                  //required
-
-                />
-              </div>
-              {/*lastname */}
-              <div className="clr-col-lg-6">
-                <label for="lastname">
-                  <b>Last Name</b>
-                </label>
-                <input
-                  value={this.state.lastname}
-                  onChange={this.handleInputChange}
-                  placeholder="Enter Last Name"
-
-                  name="lastname"
-                  //required
-
-                />
-              </div>
+            
 
               {/*username */}
               <div className="clr-col-lg-12">

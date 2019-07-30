@@ -1,7 +1,7 @@
 import React from "react";
 import CardPic from "./CardPic";
 import ClientCard from "./ClientCard";
-
+import API from "../utils/API";
 
 class Home extends React.Component {
 
@@ -11,9 +11,20 @@ class Home extends React.Component {
 
 
     componentDidMount() {
-        // call API
-        // setState({cardData: apiResult })
-    }
+        this.loadBuckets();
+      }
+
+      loadBuckets = () => {
+        API.getBuckets()
+          .then(res =>
+            this.setState({ cardData: res.data, firstname: "", lastname: "", bucketListOne: "" })
+          )
+          .catch(err => console.log(err));
+      };
+
+
+
+
 
     mockData = [
         {
@@ -80,12 +91,12 @@ class Home extends React.Component {
                         <div className="clr-row">
                             {
                                 // switch from mockData to state.cardData
-                                this.mockData.length > 0 && this.mockData.map(item => (
+                                this.state.cardData.length > 0 && this.state.cardData.map(item => (
                                     <div key={item.id} className="clr-col-lg-3 clr-col-md-3 clr-col-sm-3">
                                         <CardPic
-                                            title={item.title}
+                                            title={item.firstname} 
                                             image={item.image}
-                                            text={item.text}
+                                            text={item.bucketListOne}
                                         />
                                     </div>
                                 ))
