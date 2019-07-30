@@ -1,15 +1,23 @@
 import React from "react"
+import API from "../utils/API"
+
 
 class ClientCardForm extends React.Component {
+        constructor(){
+                super()
+                this.state = {
+                        image: "",
+                        firstname: "",
+                        lastname: "",
+                        career: "",
+                        bucklist: "",
+                };
+                this.handleFormSubmit = this.handleFormSubmit.bind(this)
+                this.handleInputChange = this.handleInputChange.bind(this)
+        }
 
-        state = {
-                image: "",
-                firstname: "",
-                lastname: "",
-                career: "",
-                bucklist: "",
-        };
-
+        
+        
         handleInputChange = event => {
 
                 const { name, value } = event.target;
@@ -22,20 +30,26 @@ class ClientCardForm extends React.Component {
         handleFormSubmit = event => {
 
                 event.preventDefault();
-                console.log(this.state.image);
-                console.log(this.state.firstname);
-                console.log(this.state.lastname);
-                console.log(this.state.age);
-                console.log(this.state.bucklist);
+                API.saveBucket({  
+                        firstname:this.state.firstname,
+                        lastname:this.state.lastname,
+                        career:this.state.career,
+                        age:this.state.age,
+                        bucklist:this.state.bucklist
+                })
+                
                 {/*internal api call needed*/ }
 
-                this.setState({
-                        image: "",
-                        firstname: "",
-                        lastname: "",
-                        career: "",
-                        age: "",
-                        bucklist: "",
+                this.setState(() =>{
+                       return{
+                        image:"", 
+                        firstname:"",
+                        lastname:"" ,
+                        career:"",
+                        age:"",
+                        bucklist:"",
+                       } 
+
 
                 });
 
@@ -57,7 +71,7 @@ class ClientCardForm extends React.Component {
                                                 onChange={this.handleInputChange}
                                                 type="image"
                                                 type="text"
-                                                src="{this.state.image}"
+                                                src={this.state.image}
                                                 placeholder="Image URL"
                                         />
                                         {/*firstname entry*/}

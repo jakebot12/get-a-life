@@ -6,14 +6,18 @@ import ClientCardForm from "./ClientCardForm";
 
 class Dashboard extends React.Component  {
   constructor(props){
-    super(props)
+    super()
     this.state={
-      
+      firstname:props.firstname,
+      lastname:props.lastname,
+      career:props.career,
+      age:props.age,
+      bucklist:props.bucklist
     }
   }
    
   render(){ 
-
+console.log(this.props.firstname)
   return (
 <div>
   
@@ -21,18 +25,20 @@ class Dashboard extends React.Component  {
       <div className="clr-row ">
             <div className="clr-col-lg-3 clr-col-md-3 clr-col-sm-3">
               <ClientCardForm 
-              name={this.state.name}
+              firstname={this.state.firstname}
+              lastname={this.state.lastname}
               career={this.state.career}
               age={this.state.age}
               bucklist={this.state.bucklist}
-              
+             
               />
             </div>
   
   {/* Example of Profile Card */}
             <div className="clr-col-lg-3 clr-col-md-3 clr-col-sm-3">
               <ClientCard
-                name={this.state.name}
+                firstname={this.state.firstname}
+                lastname={this.state.lastname}
                 career={this.state.career}
                 age={this.state.age}
                 bucklist={this.state.bucklist}

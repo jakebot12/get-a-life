@@ -1,8 +1,20 @@
 import React from "react"
-
+import ClientCardForm from "./ClientCardForm"
 
 
 class ClientCard extends React.Component  {
+    constructor(props){
+        super()
+        console.log("hllo")
+        this.state ={
+            firstname:props.firstname,
+            lastname: props.lastname,
+            career:props.career,
+            age:props.age,
+            bucketlist:props.bucketlist
+        }
+        
+    }
     render(){ 
 
  return (
@@ -17,16 +29,17 @@ class ClientCard extends React.Component  {
                         {/*text/Profile*/}
                             <div className="card-text">
                             <div className="ClientInfo">
-                                Name: {this.props.name}
+                                Name: {this.state.firstname }
+                                        {this.state.lastname} 
                                 <br></br>
-                                Career: {this.props.career}
+                                Career: {this.state.career}
                                 <br></br>
-                                Age: {this.props.age}
+                                Age: {this.state.age}
                                 <br></br>
                                 BucketList:
                                                    
-                                {this.props.bucketlist}
-
+                                {this.state.bucketlist} 
+                            
                             </div>
                         </div>
                     </div>
